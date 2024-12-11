@@ -32,17 +32,39 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body className="h-full flex flex-col justify-between">
-        <main className="flex-grow flex flex-col">
+      <body className="flex h-full flex-col justify-between">
+        <main className="flex flex-grow flex-col">
           <Outlet />
         </main>
-        <footer className="bg-black text-yellow-700 text-center pb-4">
-          <div className="container mx-auto">
-            <p>&copy; Wiff Week 2025 <Link to="/list" className="underline hover:text-yellow-500 text-black">
-              List
-            </Link></p>
+        <footer className="bg-black pb-4 text-center text-yellow-700">
+          <div className="container mx-auto flex items-center justify-between">
+          <p className="ml-3">
+              <Link
+                to="https://www.youtube.com/watch?v=q-Y0bnx6Ndw"
+                className="text-black underline hover:text-gray-700"
+              >
+                Rick
+              </Link>
+            </p>
+            <p>
+              <Link
+                to="/"
+                className="text-yellow-700 underline hover:text-yellow-500"
+              >
+                &copy; Wiff Week 2025
+              </Link>
+            </p>
+            <p className="mr-3">
+              <Link
+                to="/list"
+                className="text-black underline hover:text-gray-700"
+              >
+                List
+              </Link>
+            </p>
           </div>
         </footer>
+
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
