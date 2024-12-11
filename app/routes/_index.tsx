@@ -39,7 +39,7 @@ export default function Index() {
         <CountdownTimer targetDate={targetDate} />
       </div>
       <div className="mx-auto flex flex-col items-center justify-center">
-        <h3 className="text-4xl mb-4 mt-10">Enter your email to receive updates</h3>
+        <h3 className="text-xl mb-4 mt-10">Enter your email to receive updates</h3>
         <Form method="post" className="space-y-4 flex flex-col items-center">
           <input
             type="email"
