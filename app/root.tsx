@@ -51,7 +51,7 @@ export default function App() {
                 to="/"
                 className="text-yellow-700 underline hover:text-yellow-500"
               >
-                &copy; Wiff Week 2025
+                &copy; Wellington Independent Film Festival
               </Link>
             </p>
             <p className="mr-3">
