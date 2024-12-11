@@ -31,8 +31,11 @@ const CountdownTimer = ({ targetDate }: { targetDate: Date }) => {
       <h4 className="text-3xl md:text-4xl lg:text-4xl font-bold mb-7 tracking-wide">
         IS COMING
       </h4>
+      <h4 className="text-sm md:text-md lg:text-lg font-bold mb-2 tracking-wide">
+        Launch Party
+      </h4>
       <h4 className="text-xl md:text-3xl lg:text-5xl font-bold mb-4 tracking-wide">
-        Dec 1st, 2025 at 8:00 PM EST
+        Dec 1st, 2025 8:00 PM EST
       </h4>
       <div className="flex space-x-4 text-3xl md:text-5xl lg:text-6xl">
         <div className="flex flex-col items-center">
