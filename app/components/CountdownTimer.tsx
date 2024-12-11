@@ -25,7 +25,7 @@ const CountdownTimer = ({ targetDate }: { targetDate: Date }) => {
 
   return (
     <div className="flex flex-col items-center justify-center text-center text-yellow-600">
-      <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-4 tracking-wide font-flick">
+      <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-4 tracking-wide">
         WIFF WEEK 2025
       </h1>
       <h4 className="text-3xl md:text-5xl lg:text-7xl font-bold mb-4 tracking-wide">
