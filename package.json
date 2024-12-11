@@ -1,10 +1,10 @@
 {
-  "name": "my-remix-app-6283",
+  "name": "wiff",
   "private": true,
   "sideEffects": false,
   "type": "module",
   "scripts": {
-    "build": "remix build",
+    "build": "npm run prisma:deploy && remix build",
     "dev": "remix dev -c \"npm run dev:serve\"",
     "dev:serve": "NODE_OPTIONS=\"--import ./mocks/index.js\" remix-serve ./build/index.js",
     "format": "prettier --write .",
@@ -17,7 +17,9 @@
     "pretest:e2e:run": "npm run build",
     "test:e2e:run": "cross-env PORT=8811 start-server-and-test start:mocks http://localhost:8811 \"npx cypress run\"",
     "typecheck": "tsc && tsc -p cypress",
-    "validate": "npm-run-all --parallel \"test -- --run\" lint typecheck test:e2e:run"
+    "validate": "npm-run-all --parallel \"test -- --run\" lint typecheck test:e2e:run",
+    "prisma:generate": "prisma generate",
+    "prisma:deploy": "prisma generate && prisma migrate deploy"
   },
   "eslintIgnore": [
     "/node_modules",
