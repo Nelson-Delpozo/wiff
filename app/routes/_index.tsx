@@ -1,6 +1,7 @@
 import { ActionFunction } from "@remix-run/node";
 import { useActionData, Form } from "@remix-run/react";
 
+import CountdownTimer from "~/components/CountdownTimer";
 import { prisma } from "~/db.server";
 
 export const action: ActionFunction = async ({ request }) => {
@@ -30,24 +31,34 @@ export const action: ActionFunction = async ({ request }) => {
 
 export default function Index() {
   const actionData = useActionData<{ error?: string; success?: boolean }>();
+  const targetDate = new Date("2025-12-01T20:00:00-05:00"); // 8 PM EST
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-black text-gold">
-      <h1 className="text-4xl mb-4">Wiffweek is Coming!</h1>
-      {/* Countdown Timer Component will go here */}
-      <Form method="post" className="space-y-4">
-        <input
-          type="email"
-          name="email"
-          placeholder="Enter your email"
-          className="p-2 rounded border text-black"
-        />
-        <button type="submit" className="p-2 rounded bg-gold text-black">
-          Sign Up
-        </button>
-      </Form>
-      {actionData?.error ? <p className="text-red-500">{actionData.error}</p> : null}
-      {actionData?.success ? <p className="text-green-500">Thank you for signing up!</p> : null}
+    <div className="flex flex-col items-center justify-center text-center min-h-screen max-h-screen bg-black text-yellow-700 relative">
+      <div className="mt-10">
+        <CountdownTimer targetDate={targetDate} />
+      </div>
+      <div className="mx-auto flex flex-col items-center justify-center">
+        <h3 className="text-4xl mb-4 mt-10">Enter your email to receive updates</h3>
+        <Form method="post" className="space-y-4 flex flex-col items-center">
+          <input
+            type="email"
+            name="email"
+            placeholder="Enter your email"
+            className="p-2 rounded border text-black w-64"
+          />
+          <button
+            type="submit"
+            className="p-2 mt-4 rounded bg-yellow-600 text-black w-64"
+          >
+            Submit
+          </button>
+        </Form>
+        {actionData?.error ? <p className="text-red-500 mt-4">{actionData.error}</p> : null}
+        {actionData?.success ? (
+          <p className="text-green-500 mt-4">Thank you! We&apos;ll keep you posted!</p>
+        ) : null}
+      </div>
     </div>
   );
 }
