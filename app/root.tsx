@@ -51,7 +51,7 @@ export default function App() {
                 to="/"
                 className="text-yellow-700 underline hover:text-yellow-500"
               >
-                &copy; Wellington Independent Film Festival
+                &copy; Wellington Indie Film Festival
               </Link>
             </p>
             <p className="mr-3">
