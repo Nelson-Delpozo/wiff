@@ -14,7 +14,10 @@ export const loader: LoaderFunction = async ({ request }) => {
   // Check if the password is correct
   if (password !== PASSWORD) {
     const redirectUrl = new URL("/list-password", url.origin);
-    redirectUrl.searchParams.set("error", "Incorrect password. Please try again.");
+    redirectUrl.searchParams.set(
+      "error",
+      "Incorrect password. Please try again.",
+    );
     return redirect(redirectUrl.toString());
   }
 
@@ -49,32 +52,48 @@ export default function List() {
   };
 
   return (
-    <div className="min-h-full bg-black text-gold p-8 text-center">
-      <h1 className="text-4xl mb-8 font-paint">Emails</h1>
+    <div className="min-h-full bg-black p-8 text-center text-gold">
+      <h1 className="mb-8 font-paint text-4xl">Emails</h1>
       <button
         onClick={handleExportCSV}
-        className="mb-4 p-2 rounded bg-gold text-black hover:bg-yellow-500"
+        className="mb-4 rounded bg-gold p-2 text-black hover:bg-yellow-500"
       >
         Export for emailing
       </button>
-      <table className="table-auto w-full bg-yellow-700 text-black rounded overflow-hidden">
-        <thead>
-          <tr>
-            <th className="px-4 py-2 cursor-pointer" onClick={() => setSortOrder(sortOrder === "asc" ? "desc" : "asc")}>
-              Date {sortOrder === "asc" ? "▲" : "▼"}
-            </th>
-            <th className="px-4 py-2">Email</th>
-          </tr>
-        </thead>
-        <tbody>
-          {sortedData.map((signup) => (
-            <tr key={signup.email} className="bg-yellow-100 hover:bg-yellow-200">
-              <td className="px-4 py-2">{new Date(signup.createdAt).toLocaleDateString()}</td>
-              <td className="px-4 py-2">{signup.email}</td>
+      <div className="overflow-x-auto">
+        <table className="w-full table-auto overflow-hidden rounded bg-yellow-700 text-black">
+          <thead>
+            <tr>
+              <th
+                className="cursor-pointer px-4 py-2"
+                onClick={() =>
+                  setSortOrder(sortOrder === "asc" ? "desc" : "asc")
+                }
+              >
+                Date {sortOrder === "asc" ? "▲" : "▼"}
+              </th>
+              <th className="px-4 py-2">Email</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {sortedData.map((signup) => (
+              <tr
+                key={signup.email}
+                className="bg-yellow-100 hover:bg-yellow-200"
+              >
+                <td className="px-4 py-2">
+                  {new Intl.DateTimeFormat("en-US", {
+                    month: "numeric",
+                    day: "numeric",
+                    year: "2-digit",
+                  }).format(new Date(signup.createdAt))}
+                </td>
+                <td className="px-4 py-2">{signup.email}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }
