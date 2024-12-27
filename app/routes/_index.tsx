@@ -32,7 +32,7 @@ export const action: ActionFunction = async ({ request }) => {
 export default function Index() {
   const actionData = useActionData<{ error?: string; success?: boolean }>();
   const navigation = useNavigation(); // Tracks submission state
-  const targetDate = new Date("2025-12-01T20:00:00-05:00"); // 8 PM EST
+  const targetDate = new Date("2025-12-05T20:00:00-05:00"); // 8 PM EST
 
   return (
     <div className="flex flex-col items-center justify-center text-center min-h-full bg-black text-yellow-700 relative">
